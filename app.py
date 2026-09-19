@@ -22,9 +22,9 @@ st.set_page_config(
 )
 
 
-# Load API credentials from environment variables
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-OPENAI_API_BASE = os.environ.get("OPENAI_BASE_URL")
+# Load API credentials from Streamlit secrets (~/.streamlit/secrets.toml)
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_BASE_URL"] = st.secrets["OPENAI_API_BASE"]
 
 # ── LLMs ─────────────────────────────────────────────────────────────────────
 @st.cache_resource
