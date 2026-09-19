@@ -22,17 +22,9 @@ st.set_page_config(
 )
 
 
-# Load the JSON file and extract values
-file_name = 'config.json'
-with open(file_name, 'r') as file:
-    config = json.load(file)
-    OPENAI_API_KEY = config.get("OPENAI_API_KEY") # Loading the API Key
-    OPENAI_API_BASE = config.get("OPENAI_API_BASE") # Loading the API Base Url
-
-
-# Storing API credentials in environment variables
-os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
-os.environ["OPENAI_BASE_URL"] = OPENAI_API_BASE
+# Load API credentials from environment variables
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+OPENAI_API_BASE = os.environ.get("OPENAI_BASE_URL")
 
 # ── LLMs ─────────────────────────────────────────────────────────────────────
 @st.cache_resource
